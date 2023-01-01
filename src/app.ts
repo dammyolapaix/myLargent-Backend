@@ -5,6 +5,7 @@ import * as dotenv from 'dotenv'
 import express, { Express } from 'express'
 import cors from 'cors'
 import helmet from 'helmet'
+import { connectDB } from './api/v1/config'
 
 dotenv.config()
 
@@ -36,6 +37,9 @@ app.use(express.json())
  */
 const startApp = async () => {
   try {
+    await connectDB()
+    console.log(`MongoDB connected`)
+
     app.listen(PORT, () => {
       console.log(`App Listening on port ${PORT}`)
     })
