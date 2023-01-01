@@ -5,6 +5,7 @@ import * as dotenv from 'dotenv'
 import express, { Express } from 'express'
 import cors from 'cors'
 import helmet from 'helmet'
+import routes from './api/v1/routes'
 import { connectDB } from './api/v1/config'
 import { errorHandler } from './api/v1/middlewares'
 
@@ -32,6 +33,7 @@ app.use(
   })
 )
 app.use(express.json())
+app.use(routes)
 app.use(errorHandler)
 
 /**
