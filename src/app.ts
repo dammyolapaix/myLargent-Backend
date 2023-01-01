@@ -6,6 +6,7 @@ import express, { Express } from 'express'
 import cors from 'cors'
 import helmet from 'helmet'
 import { connectDB } from './api/v1/config'
+import { errorHandler } from './api/v1/middlewares'
 
 dotenv.config()
 
@@ -31,6 +32,7 @@ app.use(
   })
 )
 app.use(express.json())
+app.use(errorHandler)
 
 /**
  * Server Activation
